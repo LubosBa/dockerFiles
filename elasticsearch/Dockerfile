@@ -8,7 +8,7 @@ LABEL maintainer "lubos@lubos.sk"
 WORKDIR /app/
 
 # Copy java
-COPY ../data/java8.tar.gz ./java8.tar.gz
+COPY java8.tar.gz ./java8.tar.gz
 
 # Unpacks java
 RUN tar xf java8.tar.gz && mv jre1.8.0_131 java

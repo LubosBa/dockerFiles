@@ -14,10 +14,10 @@ COPY java8.tar.gz ./java8.tar.gz
 RUN tar xf java8.tar.gz && mv jre1.8.0_131 java
 
 # Download Elastic search
-ADD https://artifacts.elastic.co/downloads/logstash/logstash-5.4.0.tar.gz .
+ADD https://artifacts.elastic.co/downloads/logstash/logstash-6.0.0.tar.gz .
 
 # Unpacks Elastic
-RUN tar -xf logstash-5.4.0.tar.gz && rm logstash-5.4.0.tar.gz
+RUN tar -xf logstash-6.0.0.tar.gz && rm logstash-6.0.0.tar.gz
 
 # Creates unpriviledged user
 RUN useradd -u 1001 --shell /bin/bash logstash
@@ -35,7 +35,7 @@ USER logstash
 ENV JAVA_HOME "/app/java/"
 ENV PATH "${PATH}:${JAVA_HOME}/bin"
 
-EXPOSE 5044 
+EXPOSE 5044
 
 # Starts ElasticSearch
-CMD /app/logstash-5.4.0/bin/logstash --path.settings /config/
+CMD /app/logstash-6.0.0/bin/logstash --path.settings /config/
