@@ -8,17 +8,16 @@ LABEL maintainer "lubos@lubos.sk"
 WORKDIR /app/
 
 # Copy java
-COPY java8.tar.gz ./java8.tar.gz
-COPY startup.sh .
+COPY ../data/java8.tar.gz ./java8.tar.gz
 
 # Unpacks java
 RUN tar xf java8.tar.gz && mv jre1.8.0_131 java
 
 # Download Elastic search
-ADD https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.0.tar.gz .
+ADD https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.0.0.tar.gz .
 
 # Unpacks Elastic
-RUN tar -xf elasticsearch-5.4.0.tar.gz && rm elasticsearch-5.4.0.tar.gz
+RUN tar -xf elasticsearch-6.0.0.tar.gz && rm elasticsearch-6.0.0.tar.gz
 
 # Creates unpriviledged user
 RUN useradd -u 1000 --shell /bin/bash elastic
@@ -37,4 +36,4 @@ ENV JAVA_HOME "/app/java/"
 ENV PATH "${PATH}:${JAVA_HOME}/bin"
 
 # Starts ElasticSearch
-CMD /app/elasticsearch-5.4.0/bin/elasticsearch -Epath.conf=/config/
+CMD /app/elasticsearch-6.0.0/bin/elasticsearch -Epath.conf=/config/
