@@ -34,6 +34,7 @@ USER elastic
 # Setups env
 ENV JAVA_HOME "/app/java/"
 ENV PATH "${PATH}:${JAVA_HOME}/bin"
+ENV ES_PATH_CONF "/config"
 
 # Starts ElasticSearch
-CMD /app/elasticsearch-6.0.0/bin/elasticsearch -Epath.conf=/config/
+CMD /app/elasticsearch-6.0.0/bin/elasticsearch
