@@ -11,7 +11,7 @@ WORKDIR /app/
 COPY java8.tar.gz ./java8.tar.gz
 
 # Unpacks java
-RUN tar xf java8.tar.gz && mv jre1.8.0_131 java
+RUN tar xf java8.tar.gz && mv jre1.8.0_151 java
 
 # Download Elastic search
 ADD https://artifacts.elastic.co/downloads/logstash/logstash-6.0.0.tar.gz .
