@@ -22,4 +22,4 @@ RUN tar -xf guacamole-server-0.9.14.tar.gz  -C /opt/; \
 
 USER guacad
 
-CMD /opt/env/sbin/guacd -b 0.0.0.0 -l 4823
+CMD /opt/env/sbin/guacd -b 0.0.0.0 -l 4823 -f
