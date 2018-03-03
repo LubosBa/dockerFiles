@@ -23,7 +23,7 @@ RUN tar -xf java8.tar.gz -C /opt/java --strip-components=1; \
     tar -xf atlassian-jira-software-7.8.0.tar.gz -C /opt/jira --strip-components=1; \
     sed -i 's/jira\.home =/jira\.home = \/jira/' /opt/jira/atlassian-jira/WEB-INF/classes/jira-application.properties; \
     mv mysql-connector-java-5.1.45-bin.jar /opt/jira/lib/; \
-    chown jira:jira /opt/*
+    chown -R jira:jira /opt/*
 # Run Jira under unpriviledged user.
 USER jira
 
