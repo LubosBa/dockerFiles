@@ -11,7 +11,7 @@ ADD http://tux.rainside.sk/apache/guacamole/0.9.14/source/guacamole-server-0.9.1
 
 RUN tar -xf guacamole-server-0.9.14.tar.gz  -C /opt/; \
     apt-get update && \
-    apt-get install build-essential pkg-config automake libcairo2-dev \
+    apt-get install -y build-essential pkg-config automake libcairo2-dev \
     libjpeg62-turbo-dev libpng-dev libossp-uuid-dev \
     libavutil-dev libswscale-dev 	libfreerdp-dev libpango1.0-dev libssh2-1-dev \
     libtelnet-dev libvncserver-dev 	libpulse-dev 	libssl-dev libvorbis-dev \
