@@ -15,7 +15,7 @@ RUN tar -xf guacamole-server-0.9.14.tar.gz  -C /opt/; \
     libjpeg62-turbo-dev libpng-dev libossp-uuid-dev \
     libavutil-dev libswscale-dev 	libfreerdp-dev libpango1.0-dev libssh2-1-dev \
     libtelnet-dev libvncserver-dev 	libpulse-dev 	libssl-dev libvorbis-dev \
-    libwebp-dev libavcodec-dev; \
+    libwebp-dev libavcodec-dev fonts-dejavu-core; \
     rm -rf /var/lib/apt/lists/*; \
     /opt/guacamole-server-0.9.14/configure --prefix=/opt/env && make && make install; \
     useradd -u 1001 --shell /bin/bash guacad
