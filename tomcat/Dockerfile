@@ -34,5 +34,6 @@ USER tomcat
 ENV JAVA_HOME "/opt/java/"
 ENV PATH "${PATH}:${JAVA_HOME}/bin"
 ENV CATALINA_BASE "/tomcat"
+ENV GUACAMOLE_HOME "/tomcat/conf/"
 
 CMD /opt/entrypoint.sh
