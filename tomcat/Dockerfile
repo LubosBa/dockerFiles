@@ -21,7 +21,8 @@ RUN mkdir /opt/java; mkdir /opt/tomcat; \
     tar -xf java8.tar.gz -C /opt/java --strip-components=1; \
     tar -xf apache-tomcat-8.5.28.tar.gz -C /opt/tomcat --strip-components=1; \
     useradd -u 1001 --shell /bin/bash tomcat; \
-    chown -R 1001:1001 /opt; \
+    chown -R 1001:1001 /opt/*; \
+    chmod +x /opt/entrypoint.sh; \
     mkdir /tomcat; mkdir /tomcat/bin; mkdir /tomcat/temp; mkdir /tomcat/work; \
     chown -R 1001:1001 /tomcat/*
 
