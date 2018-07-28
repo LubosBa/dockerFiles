@@ -10,7 +10,7 @@ HOSTNAME="$(hostname -s)"
 
 # Check, if ElasticSearch config folder is empty:
 if [[ -z "$(ls -A /config/)" ]]; then
-  cp -r /opt/elastic/config/* /config/
+  cp -r /opt/elasticsearch/config/* /config/
   # Prepare ES configu before startup as this will be first time run.
   # Set cluster name.
   sed -i 's/#cluster.name: my-application/cluster.name: es-hertzner/' /config/elasticsearch.yml
