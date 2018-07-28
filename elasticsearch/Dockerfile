@@ -14,7 +14,7 @@ ADD https://f.lubos.sk/docker/java.tar.gz .
 ADD https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.3.2.tar.gz .
 
 # Add startup script.
-COPY entrypoint.sh ./entrypoint.sh
+ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/elasticsearch/entrypoint.sh .
 
 # Prepare the container for ElasticSearch.
 RUN mkdir -p /opt/java; mkdir -p /opt/elasticsearch; \
