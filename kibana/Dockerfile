@@ -11,7 +11,7 @@ WORKDIR /opt/
 ADD https://artifacts.elastic.co/downloads/kibana/kibana-6.3.2-linux-x86_64.tar.gz .
 
 # Add startup script.
-ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/elasticsearch/entrypoint.sh .
+ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/kibana/entrypoint.sh .
 
 # Prepare the container for Kibana.
 RUN mkdir -p /opt/kibana; \
