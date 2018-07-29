@@ -19,4 +19,4 @@ if [[ -z "$(ls -A /config/)" ]]; then
   sed -i "s|#elasticsearch\.url: \"http://localhost:9200\"|elasticsearch\.url: \"http://els1:9200\"|" /config/kibana.yml
 fi
 
-/opt/kibana/bin/kibana serve --log-file /logs/kibana.log
+/opt/kibana/bin/kibana serve
