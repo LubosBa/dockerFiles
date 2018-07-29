@@ -13,6 +13,9 @@ ADD https://f.lubos.sk/docker/java.tar.gz .
 # Download Logstash.
 ADD https://artifacts.elastic.co/downloads/logstash/logstash-6.3.2.tar.gz .
 
+# Add startup script.
+ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/logstash/entrypoint.sh .
+
 # Prepare the container for Logstash.
 RUN mkdir -p /opt/java; mkdir -p /opt/logstash; \
     tar -xf java.tar.gz -C /opt/java --strip-components=1; \
