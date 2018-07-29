@@ -31,7 +31,7 @@ VOLUME ["/logs", "/data", "/config"]
 USER logstash
 
 # Setups env
-ENV JAVA_HOME "/app/java/"
+ENV JAVA_HOME "/opt/java/"
 ENV PATH "${PATH}:${JAVA_HOME}/bin"
 ENV LS_SETTINGS_DIR "/config/"
 
