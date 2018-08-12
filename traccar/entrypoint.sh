@@ -13,7 +13,7 @@ if [[ -z "$(ls -A /config/)" ]]; then
   cp  /opt/traccar/conf/traccar.xml /config/
 
   # Adjust the location of default config file.
-  sed -i "s|\./conf/|/opt/traccar/conf/|" config/traccar.xml
+  sed -i "s|\./conf/|/opt/traccar/conf/|" /config/traccar.xml
 
 
 fi
