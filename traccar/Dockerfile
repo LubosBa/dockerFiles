@@ -13,8 +13,13 @@ ADD https://f.lubos.sk/docker/java.tar.gz .
 # Download traccar
 ADD https://github.com/tananaev/traccar/releases/download/v4.0/traccar-other-4.0.zip .
 
+# Download entrypoint.sh
+ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/traccar/entrypoint.sh .
+
 # Prepare the container for traccar.
 RUN mkdir -p /opt/java; mkdir -p /opt/traccar; \
+    apt-get update && apt-get install -y unzip; \
+    rm -rf /var/lib/apt/lists/*; \
     tar -xf java.tar.gz -C /opt/java --strip-components=1; \
     unzip traccar-other-4.0.zip -d /opt/traccar; \
     useradd -u 1001 --shell /bin/bash traccar; \
