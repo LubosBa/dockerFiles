@@ -11,7 +11,7 @@ WORKDIR /opt/
 ADD https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-6.5.1-linux-x86_64.tar.gz .
 
 # Add startup script.
-ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/elasticsearch/entrypoint.sh .
+ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/heartbeat/entrypoint.sh .
 
 # Prepare the container for ElasticSearch.
 RUN mkdir -p /opt/heartbeat; \
