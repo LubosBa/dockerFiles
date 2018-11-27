@@ -18,7 +18,9 @@ RUN mkdir -p /opt/heartbeat; \
     tar -xf heartbeat-6.5.1-linux-x86_64.tar.gz -C /opt/heartbeat --strip-components=1; \
     useradd -u 1001 --shell /bin/bash heartbeat; \
     chown -R 1001:1001 /opt/*; \
-    chmod +x /opt/entrypoint.sh;
+    chmod +x /opt/entrypoint.sh; \
+    apt-get update && apt-get install -y ca-certificates && rm -rf /var/lib/apt/lists/*;
+
 
 # Setup persistent storage
 VOLUME ["/logs", "/data", "/config"]
