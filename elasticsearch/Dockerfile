@@ -11,7 +11,7 @@ WORKDIR /opt/
 ADD https://f.lubos.sk/docker/java.tar.gz .
 
 # Download Elastic search
-ADD https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.3.2.tar.gz .
+ADD https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.1.tar.gz .
 
 # Add startup script.
 ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/elasticsearch/entrypoint.sh .
@@ -19,7 +19,7 @@ ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/elasticsearch/e
 # Prepare the container for ElasticSearch.
 RUN mkdir -p /opt/java; mkdir -p /opt/elasticsearch; \
     tar -xf java.tar.gz -C /opt/java --strip-components=1; \
-    tar -xf elasticsearch-6.3.2.tar.gz -C /opt/elasticsearch --strip-components=1; \
+    tar -xf elasticsearch-6.5.1.tar.gz -C /opt/elasticsearch --strip-components=1; \
     useradd -u 1001 --shell /bin/bash elastic; \
     chown -R 1001:1001 /opt/*; \
     chmod +x /opt/entrypoint.sh;
