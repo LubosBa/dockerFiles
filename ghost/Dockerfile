@@ -14,7 +14,7 @@ ADD https://nodejs.org/dist/v10.15.1/node-v10.15.1-linux-x64.tar.xz .
 ADD https://github.com/TryGhost/Ghost/releases/download/2.13.1/Ghost-2.13.1.zip .
 
 # Add startup script.
-ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/logstash/entrypoint.sh .
+ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/ghost/entrypoint.sh .
 
 # Prepare the container for Logstash.
 RUN mkdir -p /opt/node; mkdir -p /opt/ghost; \
