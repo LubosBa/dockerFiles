@@ -23,7 +23,7 @@ RUN mkdir -p /opt/node; mkdir -p /opt/ghost; \
     apt-get install unzip -y; \
     tar -xf node-v10.15.1-linux-x64.tar.xz -C /opt/node --strip-components=1; \
     unzip Ghost-2.13.1.zip -d /opt/ghost; \
-    useradd -u 1001 --shell /bin/bash ghost_user; \
+    useradd -d /data/ -u 1001 --shell /bin/bash ghost_user; \
     chown -R 1001:1001 /opt/*; \
     chmod +x /opt/entrypoint.sh;
 
