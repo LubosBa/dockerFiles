@@ -25,4 +25,6 @@ PATH="${PATH}:/opt/node/bin"
 export PATH
 export NODE_ENV=production
 
+cp /config/config.production.json /opt/ghost/
+
 /opt/node/bin/node /opt/ghost/index.js
