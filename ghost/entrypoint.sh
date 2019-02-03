@@ -19,11 +19,17 @@ if [[ ! -f "/config/config.production.json" ]]; then
    
    # Copy default configuration file to /conf folder so it's editable.
    cp /opt/ghost/core/server/config/env/config.production.json /config/config.production.json
+   cp -r /opt/ghost/content /data/content
 fi
 
 PATH="${PATH}:/opt/node/bin"
 export PATH
 
+# Always copy external configuration.
 cp /config/config.production.json /opt/ghost/
 
+# Change to Ghost insallation directory.
+cd /opt/ghost/
+
+# Start Ghost
 NODE_ENV=production /opt/node/bin/node /opt/ghost/index.js
