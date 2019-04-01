@@ -11,7 +11,7 @@ WORKDIR /opt/
 ADD https://f.lubos.sk/docker/java.tar.gz .
 
 # Download Logstash.
-ADD https://artifacts.elastic.co/downloads/logstash/logstash-6.5.3.tar.gz .
+ADD https://artifacts.elastic.co/downloads/logstash/logstash-6.7.0.tar.gz .
 
 # Add startup script.
 ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/logstash/entrypoint.sh .
@@ -19,7 +19,7 @@ ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/logstash/entryp
 # Prepare the container for Logstash.
 RUN mkdir -p /opt/java; mkdir -p /opt/logstash; \
     tar -xf java.tar.gz -C /opt/java --strip-components=1; \
-    tar -xf logstash-6.5.3.tar.gz -C /opt/logstash --strip-components=1; \
+    tar -xf logstash-6.7.0.tar.gz -C /opt/logstash --strip-components=1; \
     useradd -u 1001 --shell /bin/bash logstash; \
     chown -R 1001:1001 /opt/*; \
     chmod +x /opt/entrypoint.sh;
