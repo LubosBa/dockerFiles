@@ -23,6 +23,7 @@ RUN mkdir -p /opt/stash/.stash; \
     useradd -u 1001 -d /opt/stash --shell /bin/bash stash; \
     mv stash-linux /opt/stash/; \
     chown -R 1001:1001 /opt/*; \
+    chmod +x /opt/stash/stash-linux; \
     chmod +x /opt/entrypoint.sh
 
 # Setup persistent storage
