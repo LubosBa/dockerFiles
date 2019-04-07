@@ -29,6 +29,8 @@ RUN mkdir -p /opt/stash/.stash; \
 # Setup persistent storage
 VOLUME ["/logs", "/data", "/config"]
 
+EXPOSE 9998
+
 # Change user to elastic user.
 USER stash
 
