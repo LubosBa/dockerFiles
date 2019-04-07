@@ -18,6 +18,7 @@ ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/kibana/entrypoi
 
 # Prepare the container for Kibana.
 RUN mkdir -p /opt/stash/.stash; \
+    apt-get update && apt-get install -y xz-utils && rm -rf /var/lib/apt/lists/*; \
     tar -xf ffmpeg-release-amd64-static.tar.xz -C /opt/stash/.stash --strip-components=1; \
     useradd -u 1001 -d /opt/stash --shell /bin/bash stash; \
     mv stash-linux /opt/stash/; \
