@@ -18,7 +18,7 @@ ADD https://github.com/LubosBa/dockerFiles/raw/d461c5a4ed3039a9a4532aeca027cdfae
 
 # Prepare the container for Kibana.
 RUN mkdir -p /opt/stash/.stash; \
-    apt-get update && apt-get install -y xz-utils && rm -rf /var/lib/apt/lists/*; \
+    apt-get update && apt-get install -y xz-utils curl && rm -rf /var/lib/apt/lists/*; \
     tar -xf ffmpeg-release-amd64-static.tar.xz -C /opt/stash/.stash --strip-components=1; \
     useradd -u 1001 -d /opt/stash --shell /bin/bash stash; \
     mv stash-linux /opt/stash/; \
