@@ -14,7 +14,7 @@ ADD https://github.com/stashapp/stash/releases/download/v0.0.0-alpha/stash-linux
 ADD https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz .
 
 # Add startup script.
-ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/kibana/entrypoint.sh .
+ADD https://github.com/LubosBa/dockerFiles/raw/d461c5a4ed3039a9a4532aeca027cdfaebf8752c/stash/entrypoint.sh .
 
 # Prepare the container for Kibana.
 RUN mkdir -p /opt/stash/.stash; \
