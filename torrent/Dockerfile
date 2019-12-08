@@ -6,7 +6,7 @@ LABEL maintainer "lubos@lubos.sk"
 
 # Installs fpm and rtorrent
 RUN apt-get update && apt-get install -y \
-   php7.0-fpm \
+   php-fpm \
    rtorrent \
    screen \
    nginx \
