@@ -12,4 +12,4 @@ fi
 
 # Starts other container processes
 nginx -c /etc/nginx/nginx_custom.conf && \
-php-fpm7.0 -F -y /etc/php/7.0/fpm/php-fpm_custom.conf
+php-fpm7.3 -F -y /etc/php/7.0/fpm/php-fpm_custom.conf
