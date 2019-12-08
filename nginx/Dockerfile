@@ -16,6 +16,9 @@ RUN apt-get update
 # Install nginx from dotdeb
 RUN apt-get install nginx -y
 
+# Make startup script executable.
+RUN chmod +x /opt/entrypoint.sh
+
 # Open up HTTP and HTTPS ports
 EXPOSE 80 443
 
