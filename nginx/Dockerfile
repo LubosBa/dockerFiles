@@ -4,6 +4,12 @@ FROM debian:stable
 # Meta info
 LABEL maintainer "lubos@lubos.sk"
 
+# Workdir
+WORKDIR /opt/
+
+# Add startup script.
+ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/nginx/entrypoint.sh .
+
 # Updates repo list
 RUN apt-get update
 
