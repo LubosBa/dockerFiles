@@ -8,7 +8,7 @@ LABEL maintainer "lubos@lubos.sk"
 WORKDIR /opt/
 
 # Download Stash
-ADD https://github.com/stashapp/stash/releases/download/v0.0.0-alpha/stash-linux .
+ADD https://github.com/stashapp/stash/releases/download/v0.1.1/stash-linux  .
 
 # Download FFMPeg
 ADD https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz .
@@ -29,10 +29,16 @@ RUN mkdir -p /opt/stash/.stash; \
 # Setup persistent storage
 VOLUME ["/logs", "/data", "/config"]
 
-EXPOSE 9998
+# Stash config
+ENV STASH_STASH "/data/collection/"
+ENV STASH_GENERATED "/data/generated/"
+ENV STASH_METADATA "/data/metadata/"
+ENV STASH_CACHE "/data/cache/"
+
+EXPOSE 9999
 
 # Change user to elastic user.
 USER stash
 
-# Starts Kibana
+# Execute entrypoint
 CMD /opt/entrypoint.sh
