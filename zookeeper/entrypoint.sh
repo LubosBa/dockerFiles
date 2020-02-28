@@ -10,12 +10,13 @@ HOSTNAME="$(hostname -s)"
 
 # Check, if ZooKeeper config folder is empty:
 if [[ -z "$(ls -A /config/)" ]]; then
-    cp -r /opt/apache-zookeeper-3.5.7-bin/conf/ /config/
+    cp -r /opt/apache-zookeeper-3.5.7-bin/conf/* /config/
 fi
 
-while : 
-do
-    echo "Hello!"
-    which java
-    sleep 30
-done
+if [[ ! -f /config/zoo.cfg ]]
+then
+    echo "No zoo.cfg file in /config/ folder! Please provide config"
+    exit 1
+fi
+
+/opt/apache-zookeeper-3.5.7-bin/bin/zkServer.sh --config /config/
