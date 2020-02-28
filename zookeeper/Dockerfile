@@ -29,6 +29,8 @@ VOLUME ["/logs", "/data", "/config"]
 
 # Stash config
 ENV ZOO_LOG_DIR "/logs"
+ENV JAVA_HOME "/opt/jdk-11"
+ENV PATH "${PATH}:${JAVA_HOME}/bin"
 
 
 EXPOSE 2181
