@@ -14,7 +14,7 @@ ADD https://download.java.net/openjdk/jdk11/ri/openjdk-11+28_linux-x64_bin.tar.g
 ADD https://archive.apache.org/dist/zookeeper/zookeeper-3.5.7/apache-zookeeper-3.5.7-bin.tar.gz .
 
 # Add startup script.
-ADD https://github.com/LubosBa/dockerFiles/raw/d461c5a4ed3039a9a4532aeca027cdfaebf8752c/stash/entrypoint.sh .
+ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/zookeeper/entrypoint.sh .
 
 # Prepare the container for Kibana.
 RUN apt-get update && apt-get install -y xz-utils curl && rm -rf /var/lib/apt/lists/*; \
