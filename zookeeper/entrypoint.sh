@@ -10,7 +10,7 @@ HOSTNAME="$(hostname -s)"
 
 # Check, if ZooKeeper config folder is empty:
 if [[ -z "$(ls -A /config/)" ]]; then
-    cp -r /opt/apache-zookeeper-3.5.7-bin/conf/ /conf/
+    cp -r /opt/apache-zookeeper-3.5.7-bin/conf/ /config/
 fi
 
 while : 
