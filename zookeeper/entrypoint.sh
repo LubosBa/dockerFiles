@@ -19,11 +19,4 @@ then
     exit 1
 fi
 
-
-while : 
-do
-    echo "Hehehehehe!"
-    sleep 30
-done
-
-#/opt/apache-zookeeper-3.5.7-bin/bin/zkServer.sh --config /config/
+/opt/apache-zookeeper-3.5.7-bin/bin/zkServer.sh --config /config start-foreground
