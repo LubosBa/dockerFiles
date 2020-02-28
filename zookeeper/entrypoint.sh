@@ -9,7 +9,7 @@ IP="$(ip addr show | grep inet | grep -v '127.0.0.1' | head -1 | awk '{ print $2
 HOSTNAME="$(hostname -s)"
 
 # Check, if ZooKeeper config folder is empty:
-if [[ -z "$(ls -A /conf/)" ]]; then
+if [[ -z "$(ls -A /config/)" ]]; then
     cp -r /opt/apache-zookeeper-3.5.7-bin/conf/ /conf/
 fi
 
