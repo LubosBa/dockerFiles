@@ -29,7 +29,7 @@ VOLUME ["/logs", "/data", "/config"]
 
 # Stash config
 ENV LOG_DIR "/logs"
-ENV KAFKA_LOG4J_OPTS "Dlog4j.configuration=file:"
+ENV KAFKA_LOG4J_OPTS "Dlog4j.configuration=file:/config/log4j.properties"
 ENV KAFKA_HEAP_OPTS "-Xms2G -Xmx2G"
 ENV JAVA_HOME "/opt/jdk-11"
 ENV PATH "${PATH}:${JAVA_HOME}/bin"
