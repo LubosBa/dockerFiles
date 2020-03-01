@@ -15,8 +15,8 @@ fi
 
 if [[ ! -f /config/kafka-server.properties ]]
 then
-    echo "No zoo.cfg file in /config/ folder! Please provide config"
+    echo "No kafka-server.properties file in /config/ folder! Please provide config"
     exit 1
 fi
 
-/opt/kafka_2.12-2.4.0/bin/kafka-server-start.sh /config/server.properties
+/opt/kafka_2.12-2.4.0/bin/kafka-server-start.sh /config/kafka-server.properties
