@@ -35,7 +35,7 @@ ENV JAVA_HOME "/opt/jdk-11"
 ENV PATH "${PATH}:${JAVA_HOME}/bin"
 
 
-EXPOSE 9092 9091
+EXPOSE 9092 9091 9093
 
 # Change user to elastic user.
 USER kafka
