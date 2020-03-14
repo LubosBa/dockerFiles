@@ -14,7 +14,7 @@ if [[ -z "$(ls -A /config/)" ]]; then
     cp -r /opt/filebeat/kibana /opt/filebeat/module /opt/filebeat/modules.d /config/ 
 fi
 
-if [[ ! -f /config/filebeat.yml]]
+if [[ ! -f /config/filebeat.yml ]]
 then
     echo "No filebeat.yml file in /config/ folder! Please provide config"
     exit 1
