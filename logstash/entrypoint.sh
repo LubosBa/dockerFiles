@@ -25,4 +25,6 @@ if [[ -z "$(ls -A /config/)" ]]; then
 
 fi
 
+# export env variables.
+export IP HOSTNAME
 /opt/logstash/bin/logstash
