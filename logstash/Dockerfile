@@ -35,7 +35,7 @@ ENV JAVA_HOME "/opt/java/"
 ENV PATH "${PATH}:${JAVA_HOME}/bin"
 ENV LS_SETTINGS_DIR "/config/"
 
-EXPOSE 5044
+EXPOSE 5044 30123
 
 # Starts ElasticSearch
 CMD /opt/entrypoint.sh
