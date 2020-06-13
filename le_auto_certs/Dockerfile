@@ -18,7 +18,7 @@ RUN apt update && apt upgrade -y; \
     apt install openssl curl certbot nano python3-certbot-dns-cloudflare -y; \
     tar -xf openjdk-11+28_linux-x64_bin.tar.gz -C /opt/java --strip-components=1; \
     rm openjdk-11+28_linux-x64_bin.tar.gz; \
-    chmod +x /certs/entrypoint.sh
+    chmod +x /opt/entrypoint.sh
 
 # Setup persistent storage
 VOLUME [ "/certs" ]
