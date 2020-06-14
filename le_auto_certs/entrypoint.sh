@@ -25,6 +25,35 @@ function interactive {
     done
 }
 
+function truststoreGen {
+    # Check, if keystore password has been specified.
+    if [[ -z "${2}" ]]; then
+        echo "Please specify keystore password!"
+        exit 1
+    fi
+
+    # Check, if truststore folder exists.
+    if [[ ! -d "/certs/truststores" ]]; then
+        mkdir -p "/certs/truststores/backup"
+    fi
+
+    # Check, if we already have an existing crt + pkey combination.
+    if [[ -f "/certs/truststores/${1}.p12" ]]; then
+        mv "/certs/truststores/${1}.p12" "/certs/truststores/backup/${1}_$(date +'%Y-%m-%d-%H-%M-%S').p12"
+    fi
+
+    # Check, if we already have a keystore.
+    if [[ -f "/certs/truststores/${1}_keystore.jks" ]]; then
+        mv "/certs/truststores/${1}_keystore.jks" "/certs/truststores/backup/${1}_keystore_$(date +'%Y-%m-%d-%H-%M-%S').jks"
+    fi
+
+    # Create crt + pkey combi pkcs12 key.
+    openssl pkcs12 -export -inkey "/certs/csr/${1}.pkey" -in "/certs/certs/${1}.crt" -name "${1}" -out "/certs/truststores/${1}.p12" -password pass:${2}
+
+    # Generate java keystore from the pkcs12 cert/key file.
+    keytool -importkeystore -srckeystore "/certs/truststores/${1}.p12" -srcstoretype pkcs12 -destkeystore "/certs/truststores/${1}_keystore.jks" -storepass ${2} -srcstorepass ${2}
+}
+
 function certGen {
     # Check, if FQDN has been specified.
     if [[ -z "${1}" ]]; then
@@ -52,7 +81,13 @@ function certGen {
         mv "/certs/fullchain/${1}.crt" "/certs/fullchain/backup/${1}_$(date +'%Y-%m-%d-%H-%M-%S').crt"
     fi
 
+    # Request new LE certificate.
     certbot certonly -c /certs/conf/${1}.conf
+
+    # Check, if we should generate a truststore + keystore
+    if [[ "${2}" == "--keystore" ]]; then
+        truststoreGen ${1} ${3}
+    fi
 }
 
 case "${1}" in
@@ -60,10 +95,10 @@ case "${1}" in
         interactive
         ;;
     "--cert-get")
-        certGen ${2}
+        certGen ${2} ${3} ${4}
         ;;
     *)
-        echo "No armugment specified, use --interactive or --cert-get <domain-name>"
+        echo "No armugment specified, use --interactive or --cert-get <domain-name> [--keystore] [keystore-password]"
         exit 1
         ;;
 esac
