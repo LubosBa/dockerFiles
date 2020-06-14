@@ -16,6 +16,7 @@ ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/le_auto_certs/e
 # Prepare the container.
 RUN apt update && apt upgrade -y; \
     apt install openssl curl certbot nano python3-certbot-dns-cloudflare -y; \
+    mkdir -p /opt/java; \
     tar -xf openjdk-11+28_linux-x64_bin.tar.gz -C /opt/java --strip-components=1; \
     rm openjdk-11+28_linux-x64_bin.tar.gz; \
     chmod +x /opt/entrypoint.sh
