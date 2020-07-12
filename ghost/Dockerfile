@@ -33,6 +33,7 @@ RUN mkdir -p /opt/node; mkdir -p /opt/ghost; \
     echo "Done with permissions change"; \
     chmod +x /opt/entrypoint.sh
 
+
 # Setup persistent storage
 VOLUME ["/logs", "/data", "/config"]
 
