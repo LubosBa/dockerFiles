@@ -16,6 +16,8 @@ ADD https://github.com/TryGhost/Ghost/releases/download/3.24.0/Ghost-3.24.0.zip 
 # Add startup script.
 ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/ghost/entrypoint.sh .
 
+ENV PATH="${PATH}:/opt/node/bin"
+
 # Prepare the container for Logstash.
 RUN mkdir -p /opt/node; mkdir -p /opt/ghost; \
     apt-get update -y; \
