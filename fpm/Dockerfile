@@ -5,7 +5,7 @@ FROM debian:stable
 LABEL maintainer "lubos@lubos.sk"
 
 # Workdir
-WORKDIR /root/
+WORKDIR /opt/
 
 # Set ups dotdeb repository
 RUN apt-get update && apt-get install -y \
