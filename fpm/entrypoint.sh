@@ -29,16 +29,16 @@ if [[ -z "$(ls -A /config/)" ]]; then
     echo "include=/config/fpm/pool.d/*.conf" >> /config/fpm/php-fpm.conf
 
     # Generate FPM pool configuration.
-    echo "[${HOSTNAME}]" >> ${HOSTNAME}.conf
-    echo "user = php_web" >> ${HOSTNAME}.conf
-    echo "group = php_web" >> ${HOSTNAME}.conf
-    echo "listen = 9000" >> ${HOSTNAME}.conf
-    echo "pm = dynamic" >> ${HOSTNAME}.conf
-    echo "pm.max_children = 5" >> ${HOSTNAME}.conf
-    echo "pm.start_servers = 2" >> ${HOSTNAME}.conf
-    echo "pm.min_spare_servers = 1" >> ${HOSTNAME}.conf
-    echo "pm.max_spare_servers = 3" >> ${HOSTNAME}.conf
-    echo "security.limit_extensions = .php .m3u" >> ${HOSTNAME}.conf
+    echo "[${HOSTNAME}]" >> /config/fpm/pool.d/${HOSTNAME}.conf
+    echo "user = php_web" >> /config/fpm/pool.d/${HOSTNAME}.conf
+    echo "group = php_web" >> /config/fpm/pool.d/${HOSTNAME}.conf
+    echo "listen = 9000" >> /config/fpm/pool.d/${HOSTNAME}.conf
+    echo "pm = dynamic" >> /config/fpm/pool.d/${HOSTNAME}.conf
+    echo "pm.max_children = 5" >> /config/fpm/pool.d/${HOSTNAME}.conf
+    echo "pm.start_servers = 2" >> /config/fpm/pool.d/${HOSTNAME}.conf
+    echo "pm.min_spare_servers = 1" >> /config/fpm/pool.d/${HOSTNAME}.conf
+    echo "pm.max_spare_servers = 3" >> /config/fpm/pool.d/${HOSTNAME}.conf
+    echo "security.limit_extensions = .php .m3u" >> /config/fpm/pool.d/${HOSTNAME}.conf
 fi
 
 # Start FPM-Pool
