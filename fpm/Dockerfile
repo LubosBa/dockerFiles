@@ -53,6 +53,8 @@ RUN useradd -u 9999 --shell /bin/bash php_web
 # Add startup script.
 ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/fpm/entrypoint.sh .
 
+RUN chmod +x /opt/entrypoint.sh
+
 VOLUME ["/logs", "/www", "/config"]
 
 # Starts PHP-FPM
