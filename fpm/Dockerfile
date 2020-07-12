@@ -51,7 +51,7 @@ php7.3-zip \
 RUN useradd -u 9999 --shell /bin/bash php_web
 
 # Add startup script.
-ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/fgm/entrypoint.sh .
+ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/fpm/entrypoint.sh .
 
 VOLUME ["/logs", "/www", "/config"]
 
