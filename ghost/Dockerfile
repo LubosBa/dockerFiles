@@ -28,7 +28,7 @@ RUN mkdir -p /opt/node; mkdir -p /opt/ghost; \
     useradd -d /data/ -u 1001 --shell /bin/bash ghost_user; \
     chown -R 1001:1001 /opt/*; \
     chmod +x /opt/entrypoint.sh; \
-    cd /opt/ghost; /opt/node/bin/npm install;
+    cd /opt/ghost; /opt/node/bin/npm install --global --production;
 
 # Setup persistent storage
 VOLUME ["/logs", "/data", "/config"]
