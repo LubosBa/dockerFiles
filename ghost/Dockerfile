@@ -26,6 +26,7 @@ RUN mkdir -p /opt/node; mkdir -p /opt/ghost; \
     tar -xf node-v10.15.1-linux-x64.tar.xz -C /opt/node --strip-components=1; \
     unzip Ghost-3.24.0.zip -d /opt/ghost; \
     cd /opt/ghost; /opt/node/bin/npm install; \
+    echo "Done with node stuff!" \
     useradd -d /data/ -u 1001 --shell /bin/bash ghost_user; \
     chown -R 1001:1001 /opt/*; \
     chmod +x /opt/entrypoint.sh;
