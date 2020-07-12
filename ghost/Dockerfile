@@ -11,7 +11,7 @@ WORKDIR /opt/
 ADD https://nodejs.org/dist/v10.15.1/node-v10.15.1-linux-x64.tar.xz .
 
 # Download ghost
-ADD https://github.com/TryGhost/Ghost/releases/download/2.13.1/Ghost-2.13.1.zip .
+ADD https://github.com/TryGhost/Ghost/releases/download/3.24.0/Ghost-3.24.0.zip .
 
 # Add startup script.
 ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/ghost/entrypoint.sh .
@@ -22,7 +22,7 @@ RUN mkdir -p /opt/node; mkdir -p /opt/ghost; \
     apt-get install xz-utils -y; \
     apt-get install unzip -y; \
     tar -xf node-v10.15.1-linux-x64.tar.xz -C /opt/node --strip-components=1; \
-    unzip Ghost-2.13.1.zip -d /opt/ghost; \
+    unzip Ghost-3.24.0.zip -d /opt/ghost; \
     useradd -d /data/ -u 1001 --shell /bin/bash ghost_user; \
     chown -R 1001:1001 /opt/*; \
     chmod +x /opt/entrypoint.sh;
