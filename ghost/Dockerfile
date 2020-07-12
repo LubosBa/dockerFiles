@@ -28,7 +28,9 @@ RUN mkdir -p /opt/node; mkdir -p /opt/ghost; \
     cd /opt/ghost; /opt/node/bin/npm install; \
     echo "Done with node stuff!"; \
     useradd -d /data/ -u 1001 --shell /bin/bash ghost_user; \
+    echo "Done with createing user"; \
     chown -R 1001:1001 /opt/*; \
+    echo "Done with permissions change"; \
     chmod +x /opt/entrypoint.sh;
 
 # Setup persistent storage
