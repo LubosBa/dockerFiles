@@ -25,7 +25,8 @@ RUN mkdir -p /opt/node; mkdir -p /opt/ghost; \
     unzip Ghost-3.24.0.zip -d /opt/ghost; \
     useradd -d /data/ -u 1001 --shell /bin/bash ghost_user; \
     chown -R 1001:1001 /opt/*; \
-    chmod +x /opt/entrypoint.sh;
+    chmod +x /opt/entrypoint.sh; \
+    cd /opt/ghost; /opt/node/bin/npm install;
 
 # Setup persistent storage
 VOLUME ["/logs", "/data", "/config"]
