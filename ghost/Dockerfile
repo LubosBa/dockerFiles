@@ -31,7 +31,7 @@ RUN mkdir -p /opt/node; mkdir -p /opt/ghost; \
     echo "Done with createing user"; \
     chown -R 1001:1001 /opt/*; \
     echo "Done with permissions change"; \
-    chmod +x /opt/entrypoint.sh;
+    chmod +x /opt/entrypoint.sh
 
 # Setup persistent storage
 VOLUME ["/logs", "/data", "/config"]
