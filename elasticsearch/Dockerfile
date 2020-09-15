@@ -11,7 +11,7 @@ WORKDIR /opt/
 ADD https://download.java.net/openjdk/jdk11/ri/openjdk-11+28_linux-x64_bin.tar.gz  .
 
 # Download Elastic search
-ADD https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.1-linux-x86_64.tar.gz .
+ADD https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.9.0-linux-x86_64.tar.gz .
 
 # Add startup script.
 ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/elasticsearch/entrypoint.sh .
