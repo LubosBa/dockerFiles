@@ -19,7 +19,7 @@ ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/elasticsearch/e
 # Prepare the container for ElasticSearch.
 RUN mkdir -p /opt/java; mkdir -p /opt/elasticsearch; \
     tar -xf openjdk-11+28_linux-x64_bin.tar.gz -C /opt/java --strip-components=1; \
-    tar -xf elasticsearch-7.6.1-linux-x86_64.tar.gz -C /opt/elasticsearch --strip-components=1; \
+    tar -xf elasticsearch-7.9.0-linux-x86_64.tar.gz -C /opt/elasticsearch --strip-components=1; \
     useradd -u 1001 --shell /bin/bash elastic; \
     chown -R 1001:1001 /opt/*; \
     chmod +x /opt/entrypoint.sh;
