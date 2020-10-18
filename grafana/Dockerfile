@@ -11,7 +11,7 @@ WORKDIR /opt/
 ADD https://dl.grafana.com/oss/release/grafana-7.2.1.linux-amd64.tar.gz .
 
 # Add startup script.
-COPY entrypoint.sh .
+ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/grafana/entrypoint.sh .
 
 # Prepare the container for Prometheus.
 RUN mkdir -p /opt/grafana; \

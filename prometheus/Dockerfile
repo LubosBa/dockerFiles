@@ -11,7 +11,7 @@ WORKDIR /opt/
 ADD https://github.com/prometheus/prometheus/releases/download/v2.21.0/prometheus-2.21.0.linux-amd64.tar.gz .
 
 # Add startup script.
-COPY entrypoint.sh .
+ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/prometheus/entrypoint.sh .
 
 # Prepare the container for Prometheus.
 RUN mkdir -p /opt/prometheus; \
