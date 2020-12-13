@@ -8,7 +8,7 @@ LABEL maintainer "lubos@lubos.sk"
 WORKDIR /opt/
 
 # Download Prometheus
-ADD https://dl.grafana.com/oss/release/grafana-7.2.1.linux-amd64.tar.gz .
+ADD https://dl.grafana.com/oss/release/grafana-7.3.5.linux-amd64.tar.gz .
 
 # Add startup script.
 ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/grafana/entrypoint.sh .
@@ -17,7 +17,7 @@ ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/grafana/entrypo
 RUN mkdir -p /opt/grafana; \
     apt-get update -y; \
     apt-get install unzip curl -y; \
-    tar -xf grafana-7.2.1.linux-amd64.tar.gz -C /opt/grafana --strip-components=1; \
+    tar -xf grafana-7.3.5.linux-amd64.tar.gz -C /opt/grafana --strip-components=1; \
     useradd -u 1001 --shell /bin/bash grafana; \
     chown -R 1001:1001 /opt/*; \
     chmod +x /opt/entrypoint.sh
