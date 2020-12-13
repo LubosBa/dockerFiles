@@ -19,7 +19,7 @@ ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/kafka/entrypoin
 # Prepare the container for Kibana.
 RUN apt-get update && apt-get install -y xz-utils curl && rm -rf /var/lib/apt/lists/*; \
     tar -xf openjdk-11+28_linux-x64_bin.tar.gz; \
-    tar -xf kafka_2.13-2.6.0.tg; \
+    tar -xf kafka_2.13-2.6.0.tgz; \
     useradd -u 1001 -d /opt/ --shell /bin/bash kafka; \
     chown -R 1001:1001 /opt/*; \
     chmod +x /opt/entrypoint.sh
