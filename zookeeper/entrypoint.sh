@@ -10,7 +10,7 @@ HOSTNAME="$(hostname -s)"
 
 # Check, if ZooKeeper config folder is empty:
 if [[ -z "$(ls -A /config/)" ]]; then
-    cp -r /opt/apache-zookeeper-3.5.7-bin/conf/* /config/
+    cp -r /opt/apache-zookeeper-3.6.2-bin/conf/* /config/
 fi
 
 if [[ ! -f /config/zoo.cfg ]]
@@ -19,4 +19,4 @@ then
     exit 1
 fi
 
-/opt/apache-zookeeper-3.5.7-bin/bin/zkServer.sh --config /config start-foreground
+/opt/apache-zookeeper-3.6.2-bin/bin/zkServer.sh --config /config start-foreground

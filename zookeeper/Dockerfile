@@ -11,7 +11,7 @@ WORKDIR /opt/
 ADD https://download.java.net/openjdk/jdk11/ri/openjdk-11+28_linux-x64_bin.tar.gz  .
 
 # Download ZooKeeper
-ADD https://archive.apache.org/dist/zookeeper/zookeeper-3.5.7/apache-zookeeper-3.5.7-bin.tar.gz .
+ADD https://downloads.apache.org/zookeeper/zookeeper-3.6.2/apache-zookeeper-3.6.2-bin.tar.gz .
 
 # Add startup script.
 ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/zookeeper/entrypoint.sh .
@@ -19,7 +19,7 @@ ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/zookeeper/entry
 # Prepare the container for Kibana.
 RUN apt-get update && apt-get install -y xz-utils curl && rm -rf /var/lib/apt/lists/*; \
     tar -xf openjdk-11+28_linux-x64_bin.tar.gz; \
-    tar -xf apache-zookeeper-3.5.7-bin.tar.gz; \
+    tar -xf apache-zookeeper-3.6.2-bin.tar.gz; \
     useradd -u 1001 -d /opt/ --shell /bin/bash zookeeper; \
     chown -R 1001:1001 /opt/*; \
     chmod +x /opt/entrypoint.sh
@@ -35,7 +35,7 @@ ENV PATH "${PATH}:${JAVA_HOME}/bin"
 
 EXPOSE 2181
 
-# Change user to elastic user.
+# Change user to zookeeper user.
 USER zookeeper
 
 # Execute entrypoint
