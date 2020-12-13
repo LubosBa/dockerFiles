@@ -11,7 +11,7 @@ WORKDIR /opt/
 ADD https://download.java.net/openjdk/jdk11/ri/openjdk-11+28_linux-x64_bin.tar.gz  .
 
 # Download Kafka
-ADD http://tux.rainside.sk/apache/kafka/2.4.0/kafka_2.12-2.4.0.tgz .
+ADD https://downloads.apache.org/kafka/2.6.0/kafka_2.13-2.6.0.tgz .
 
 # Add startup script.
 ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/kafka/entrypoint.sh .
@@ -19,7 +19,7 @@ ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/kafka/entrypoin
 # Prepare the container for Kibana.
 RUN apt-get update && apt-get install -y xz-utils curl && rm -rf /var/lib/apt/lists/*; \
     tar -xf openjdk-11+28_linux-x64_bin.tar.gz; \
-    tar -xf kafka_2.12-2.4.0.tgz; \
+    tar -xf kafka_2.13-2.6.0.tg; \
     useradd -u 1001 -d /opt/ --shell /bin/bash kafka; \
     chown -R 1001:1001 /opt/*; \
     chmod +x /opt/entrypoint.sh
@@ -37,7 +37,7 @@ ENV PATH "${PATH}:${JAVA_HOME}/bin"
 
 EXPOSE 9092 9091 9093
 
-# Change user to elastic user.
+# Change user to kafka user.
 USER kafka
 
 # Execute entrypoint
