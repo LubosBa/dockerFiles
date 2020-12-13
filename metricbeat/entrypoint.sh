@@ -10,8 +10,8 @@ HOSTNAME="$(hostname -s)"
 
 # Check, if MetricBeat config folder is empty:
 if [[ -z "$(ls -A /config/)" ]]; then
-    cp /opt/metricbeat/metricbeat-7.10.1-linux-x86_64/*.yml /config/
-    cp -r /opt/metricbeat/metricbeat-7.10.1-linux-x86_64/modules.d /opt/metricbeat/metricbeat-7.10.1-linux-x86_64/module /opt/metricbeat/metricbeat-7.10.1-linux-x86_64/kibana /config/
+    cp /opt/metricbeat/*.yml /config/
+    cp -r /opt/metricbeat/modules.d /opt/metricbeat/module /opt/metricbeat/kibana /config/
 fi
 
 if [[ ! -f /config/metricbeat.yml ]]
@@ -20,4 +20,4 @@ then
     exit 1
 fi
 
-/opt/metricbeat/metricbeat-7.10.1-linux-x86_64/metricbeat run --path.config /config --path.data /data --path.logs /logs --system.hostfs /hostfs
+/opt/metricbeat/metricbeat run --path.config /config --path.data /data --path.logs /logs --system.hostfs /hostfs

@@ -17,7 +17,7 @@ ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/metricbeat/entr
 # Prepare the container for metricbeat.
 RUN apt-get update && apt-get install -y xz-utils curl && rm -rf /var/lib/apt/lists/*; \
     mkdir /opt/metricbeat; \
-    tar -xf metricbeat-7.10.1-linux-x86_64.tar.gz -C /opt/filebeat --strip-components=1; \
+    tar -xf metricbeat-7.10.1-linux-x86_64.tar.gz -C /opt/metricbeat --strip-components=1; \
     chmod +x /opt/entrypoint.sh
 
 # Setup persistent storage
