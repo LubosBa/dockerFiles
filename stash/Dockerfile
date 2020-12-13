@@ -8,7 +8,7 @@ LABEL maintainer "lubos@lubos.sk"
 WORKDIR /opt/
 
 # Download Stash
-ADD https://github.com/stashapp/stash/releases/download/v0.1.1/stash-linux  .
+ADD https://github.com/stashapp/stash/releases/download/v0.4.0/stash-linux  .
 
 # Download FFMPeg
 ADD https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz .
