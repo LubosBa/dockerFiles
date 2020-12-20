@@ -20,4 +20,5 @@ then
     exit 1
 fi
 
+export IP HOSTNAME
 /opt/filebeat/filebeat run --path.config /config --path.data /data --path.logs /logs
