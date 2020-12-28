@@ -8,10 +8,10 @@ LABEL maintainer "lubos@lubos.sk"
 WORKDIR /opt/
 
 #Download node.js
-ADD https://nodejs.org/dist/v10.15.1/node-v10.15.1-linux-x64.tar.xz .
+ADD https://nodejs.org/dist/v15.5.0/node-v15.5.0-linux-x64.tar.xz .
 
 # Download ghost
-ADD https://github.com/TryGhost/Ghost/releases/download/3.24.0/Ghost-3.24.0.zip .
+ADD https://github.com/TryGhost/Ghost/releases/download/3.40.2/Ghost-3.40.2.zip .
 
 # Add startup script.
 ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/ghost/entrypoint.sh .
@@ -23,8 +23,8 @@ RUN mkdir -p /opt/node; mkdir -p /opt/ghost; \
     apt-get update -y; \
     apt-get install xz-utils -y; \
     apt-get install unzip curl -y; \
-    tar -xf node-v10.15.1-linux-x64.tar.xz -C /opt/node --strip-components=1; \
-    unzip Ghost-3.24.0.zip -d /opt/ghost; \
+    tar -xf node-v15.5.0-linux-x64.tar.xz -C /opt/node --strip-components=1; \
+    unzip Ghost-3.40.2.zip -d /opt/ghost; \
     cd /opt/ghost; /opt/node/bin/npm install; \
     echo "Done with node stuff!"; \
     useradd -d /data/ -u 1001 --shell /bin/bash ghost_user; \
