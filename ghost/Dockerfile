@@ -8,7 +8,7 @@ LABEL maintainer "lubos@lubos.sk"
 WORKDIR /opt/
 
 #Download node.js
-ADD https://nodejs.org/dist/v15.5.0/node-v15.5.0-linux-x64.tar.xz .
+ADD https://nodejs.org/dist/latest-v12.x/node-v12.20.0-linux-x64.tar.xz .
 
 # Download ghost
 ADD https://github.com/TryGhost/Ghost/releases/download/3.40.2/Ghost-3.40.2.zip .
@@ -22,8 +22,8 @@ ENV PATH="${PATH}:/opt/node/bin"
 RUN mkdir -p /opt/node; mkdir -p /opt/ghost; \
     apt-get update -y; \
     apt-get install xz-utils -y; \
-    apt-get install unzip curl -y; \
-    tar -xf node-v15.5.0-linux-x64.tar.xz -C /opt/node --strip-components=1; \
+    apt-get install unzip curl python3 nano -y; \
+    tar -xf node-v12.20.0-linux-x64.tar.xz -C /opt/node --strip-components=1; \
     unzip Ghost-3.40.2.zip -d /opt/ghost; \
     cd /opt/ghost; /opt/node/bin/npm install; \
     echo "Done with node stuff!"; \
