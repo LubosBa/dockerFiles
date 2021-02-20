@@ -16,6 +16,8 @@ ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/minio/entrypoin
 
 # Prepare the container for metricbeat.
 RUN apt-get update && apt-get install -y xz-utils curl && rm -rf /var/lib/apt/lists/*; \
+    useradd -u 1001 --shell /bin/bash minio; \
+    chown -R 1001:1001 /opt/*; \
     chmod +x /opt/minio; \
     chmod +x /opt/entrypoint.sh
 
@@ -24,7 +26,7 @@ VOLUME ["/logs", "/data", "/config"]
 
 
 # Change user to metricbeat user.
-USER root
+USER minio
 
 # Execute entrypoint
 CMD /opt/entrypoint.sh
