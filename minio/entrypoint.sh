@@ -13,4 +13,4 @@ MINIO_ROOT_PASSWORD="$(openssl rand -base64 8)"
 
 export IP HOSTNAME MINIO_ROOT_USER MINIO_ROOT_PASSWORD
 echo ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD}
-/opt/minio/minio server /data
+/opt/minio server /data
