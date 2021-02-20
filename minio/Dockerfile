@@ -16,7 +16,7 @@ ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/minio/entrypoin
 
 # Prepare the container for metricbeat.
 RUN apt-get update && apt-get install -y xz-utils curl && rm -rf /var/lib/apt/lists/*; \
-    chmod +x /opt/minio \
+    chmod +x /opt/minio; \
     chmod +x /opt/entrypoint.sh
 
 # Setup persistent storage
