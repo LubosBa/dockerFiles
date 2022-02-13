@@ -1,5 +1,5 @@
 # Use Debian stable as the base image
-FROM debian:stable
+FROM alpine:latest
 
 # Meta info
 LABEL maintainer "lubos@lubos.sk"
@@ -8,13 +8,10 @@ LABEL maintainer "lubos@lubos.sk"
 WORKDIR /opt/
 
 # Add startup script.
-ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/nginx/entrypoint.sh .
+ADD entrypoint.sh .
 
-# Updates repo list
-RUN apt-get update
-
-# Install nginx from dotdeb
-RUN apt-get install nginx -y
+# Updates repo list & install nginx
+RUN apk --no-cache add nginx
 
 # Make startup script executable.
 RUN chmod +x /opt/entrypoint.sh
