@@ -8,7 +8,7 @@ LABEL maintainer "lubos@lubos.sk"
 WORKDIR /opt/
 
 # Add startup script.
-ADD entrypoint.sh .
+ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/nginx/entrypoint.sh .
 
 # Updates repo list & install nginx
 RUN apk --no-cache add nginx
