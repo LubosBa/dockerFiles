@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 # This is an entrypoint of Docker MetricBeat container, it will setup some
 # sane configuration for the container and copy over the configuration files.
 # Created by Lubos Babjak.

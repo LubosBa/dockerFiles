@@ -1,5 +1,5 @@
 # Use Debian stable as the base image
-FROM debian:stable
+FROM alpine:latest
 
 # Meta info
 LABEL maintainer "lubos@lubos.sk"
@@ -12,12 +12,13 @@ WORKDIR /opt/
 ADD https://dl.min.io/server/minio/release/linux-amd64/minio .
 
 # Add startup script.
-ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/minio/entrypoint.sh .
+ADD entrypoint.sh .
 
 # Prepare the container for metricbeat.
-RUN apt-get update && apt-get install -y xz-utils curl && rm -rf /var/lib/apt/lists/*; \
-    useradd -u 1001 --shell /bin/bash minio; \
-    chown -R 1001:1001 /opt/*; \
+RUN apk --no-cache add curl openssl; \
+    adduser -h /opt/ -s /bin/sh -u 1001 -D minio; \
+    mkdir /data; \
+    chown -R 1001:1001 /opt/* /data; \
     chmod +x /opt/minio; \
     chmod +x /opt/entrypoint.sh
 
