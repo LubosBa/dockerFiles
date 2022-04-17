@@ -22,7 +22,7 @@ RUN apk --no-cache add curl openssl; \
     chmod +x /opt/entrypoint.sh
 
 # Expose application ports
-EXPOSE 9000
+EXPOSE 9000 9001
 
 # Setup persistent storage
 VOLUME ["/logs", "/data", "/config"]
