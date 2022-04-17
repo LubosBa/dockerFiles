@@ -7,7 +7,7 @@ LABEL maintainer "lubos@lubos.sk"
 # Workdir
 WORKDIR /opt/
 
-# Download minio
+# Download application
 ADD https://dl.min.io/server/minio/release/linux-amd64/minio .
 
 # Add startup script.
@@ -20,6 +20,9 @@ RUN apk --no-cache add curl openssl; \
     chown -R 1001:1001 /opt/* /data; \
     chmod +x /opt/minio; \
     chmod +x /opt/entrypoint.sh
+
+# Expose application ports
+EXPOSE 9000
 
 # Setup persistent storage
 VOLUME ["/logs", "/data", "/config"]
