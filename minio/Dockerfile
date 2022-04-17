@@ -1,4 +1,4 @@
-# Use Debian stable as the base image
+# Use Alpine latest as the base image
 FROM alpine:latest
 
 # Meta info
@@ -7,14 +7,13 @@ LABEL maintainer "lubos@lubos.sk"
 # Workdir
 WORKDIR /opt/
 
-
-# Download metricbeat
+# Download minio
 ADD https://dl.min.io/server/minio/release/linux-amd64/minio .
 
 # Add startup script.
 ADD entrypoint.sh .
 
-# Prepare the container for metricbeat.
+# Prepare the container for application.
 RUN apk --no-cache add curl openssl; \
     adduser -h /opt/ -s /bin/sh -u 1001 -D minio; \
     mkdir /data; \
@@ -26,7 +25,7 @@ RUN apk --no-cache add curl openssl; \
 VOLUME ["/logs", "/data", "/config"]
 
 
-# Change user to metricbeat user.
+# Change user to application user.
 USER minio
 
 # Execute entrypoint
