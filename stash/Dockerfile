@@ -1,5 +1,5 @@
 # Use Debian stable as the base image
-FROM debian:stable
+FROM alpine:latest
 
 # Meta info
 LABEL maintainer "lubos@lubos.sk"
@@ -8,19 +8,28 @@ LABEL maintainer "lubos@lubos.sk"
 WORKDIR /opt/
 
 # Download Stash
-ADD https://github.com/stashapp/stash/releases/download/v0.4.0/stash-linux  .
+ADD https://github.com/stashapp/stash/releases/download/v0.12.0/stash-linux  .
 
-# Download FFMPeg
-ADD https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz .
 
 # Add startup script.
-ADD https://github.com/LubosBa/dockerFiles/raw/d461c5a4ed3039a9a4532aeca027cdfaebf8752c/stash/entrypoint.sh .
+ADD entrypoint.sh .
+
+# Copy main configuration
+ADD config/config.yml .
 
 # Prepare the container for Kibana.
-RUN mkdir -p /opt/stash/.stash; \
-    apt-get update && apt-get install -y xz-utils curl && rm -rf /var/lib/apt/lists/*; \
-    tar -xf ffmpeg-release-amd64-static.tar.xz -C /opt/stash/.stash --strip-components=1; \
-    useradd -u 1001 -d /opt/stash --shell /bin/bash stash; \
+#RUN mkdir -p /opt/stash/.stash; \
+#    apt-get update && apt-get install -y xz-utils curl && rm -rf /var/lib/apt/lists/*; \
+#    tar -xf ffmpeg-release-amd64-static.tar.xz -C /opt/stash/.stash --strip-components=1; \
+#    useradd -u 1001 -d /opt/stash --shell /bin/bash stash; \
+#    mv stash-linux /opt/stash/; \
+#    chown -R 1001:1001 /opt/*; \
+#    chmod +x /opt/stash/stash-linux; \
+#    chmod +x /opt/entrypoint.sh
+
+RUN apk --no-cache add ca-certificates python3 py3-requests py3-requests-toolbelt py3-lxml py3-pip ffmpeg vips-tools && pip install --no-cache-dir mechanicalsoup cloudscraper; \
+    adduser -h /opt/stash -s /bin/sh -u 1001 -D stash; \
+    mkdir -p /opt/stash; \
     mv stash-linux /opt/stash/; \
     chown -R 1001:1001 /opt/*; \
     chmod +x /opt/stash/stash-linux; \
@@ -28,12 +37,6 @@ RUN mkdir -p /opt/stash/.stash; \
 
 # Setup persistent storage
 VOLUME ["/logs", "/data", "/config"]
-
-# Stash config
-ENV STASH_STASH "/data/collection/"
-ENV STASH_GENERATED "/data/generated/"
-ENV STASH_METADATA "/data/metadata/"
-ENV STASH_CACHE "/data/cache/"
 
 EXPOSE 9999
 

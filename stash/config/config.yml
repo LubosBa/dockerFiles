@@ -1,0 +1,23 @@
+calculate_md5: true
+dangerous_allow_public_without_auth: "false"
+database: /config/stash-go.sqlite
+generated: ""
+host: 0.0.0.0
+nobrowser: false
+parallel_tasks: 1
+plugins_path: /opt/stash/.stash/plugins
+port: 9999
+preview_audio: true
+preview_exclude_end: "0"
+preview_exclude_start: "0"
+preview_segment_duration: 0.75
+preview_segments: 12
+scrapers_path: /opt/stash/.stash/scrapers
+security_tripwire_accessed_from_public_internet: ""
+sound_on_preview: false
+stash:
+- path: /data/collection/
+  excludevideo: false
+  excludeimage: false
+video_file_naming_algorithm: MD5
+write_image_thumbnails: true

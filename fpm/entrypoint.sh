@@ -30,7 +30,7 @@ if [[ -z "$(ls -A /config/)" ]]; then
 fi
 
 # Start FPM-Pool
-/usr/sbin/php-fpm8 -F -y /config/php-fpm.conf -c /config/php.ini
+/usr/sbin/php-fpm* -F -y /config/php-fpm.conf -c /config/php.ini
 
 
 

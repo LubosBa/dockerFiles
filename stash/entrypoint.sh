@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 # This is an entrypoint of Docker Logstash container, it will setup some
 # sane configuration for the container and copy over the configuration files.
 # Created by Lubos Babjak.
@@ -13,6 +13,7 @@ if [[ -z "$(ls -A /data/)" ]]; then
   mkdir /data/generated
   mkdir /data/metadata
   mkdir /data/cache
+  cp /opt/config.yml /config/config.yml
 fi
 
-/opt/stash/stash-linux
+/opt/stash/stash-linux -c /config/config.yml

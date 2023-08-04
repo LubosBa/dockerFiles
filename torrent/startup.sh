@@ -23,5 +23,5 @@ fi
 
 # Starts other container processes
 nginx -c /etc/nginx/nginx_custom.conf && \
-php-fpm7.3 -D -y /etc/php/7.3/fpm/php-fpm_custom.conf && \
+php-fpm7.4 -D -y /etc/php/7.4/fpm/php-fpm_custom.conf && \
 su -c "/usr/bin/rtorrent -n -i ${EXT_IP} -o import=/config/rtorrent.rc" torrent
