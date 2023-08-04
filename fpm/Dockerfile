@@ -11,6 +11,7 @@ WORKDIR /opt/
 RUN apk update && apk upgrade; \
 apk add php82 php82-fpm; \
 apk search php82 | awk -F'-' '{print $1"-"$2}' | grep -vE 'pecl|php82-8' | xargs apk add; \
+apk add php82-pecl-imagick exiftool; \
 adduser -h /opt/ -s /bin/sh -u 9999 -D php_web; \
 mkdir -p /config;
 
