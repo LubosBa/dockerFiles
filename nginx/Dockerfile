@@ -16,11 +16,14 @@ ADD config/nginx.conf .
 # Add default vhost config.
 ADD config/default.conf .
 
+# Add default vhost config.
+ADD le_cert_get.sh .
+
 # Updates repo list & install nginx
-RUN apk --no-cache add nginx
+RUN apk --no-cache add nginx certbot certbot-dns-cloudflare openssl
 
 # Make startup script executable.
-RUN chmod +x /opt/entrypoint.sh
+RUN chmod +x /opt/entrypoint.sh /opt/le_cert_get.sh
 
 # Open up HTTP and HTTPS ports
 EXPOSE 80 443
