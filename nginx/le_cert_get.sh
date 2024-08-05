@@ -54,7 +54,7 @@ function generateCert() {
         else
             # Request cert
             echo "[$(currentDate)] ${FQDN} requesting a new certificate from Let's Encrypt, wait a minute!"
-            certbot certonly -c ${LE_FOLDER}/conf/${FQDN}.conf --logs-dir "${LE_LOGS}" --quiet --dry-run
+            certbot certonly -c ${LE_FOLDER}/conf/${FQDN}.conf --logs-dir "${LE_LOGS}" --quiet
             if [ $? -ne 0 ]; then
                 echo "[$(currentDate)] ${FQDN} failed to request the certificate."
                 return 1
