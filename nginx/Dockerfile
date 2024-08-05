@@ -20,7 +20,7 @@ ADD config/default.conf .
 ADD le_cert_get.sh .
 
 # Updates repo list & install nginx
-RUN apk --no-cache add nginx certbot certbot-dns-cloudflare openssl
+RUN apk --no-cache add nginx certbot certbot-dns-cloudflare openssl nginx-mod-http-dav-ext
 
 # Make startup script executable.
 RUN chmod +x /opt/entrypoint.sh /opt/le_cert_get.sh
