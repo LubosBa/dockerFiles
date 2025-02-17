@@ -54,6 +54,13 @@ function generateCert() {
         else
             # Request cert
             echo "[$(currentDate)] ${FQDN} requesting a new certificate from Let's Encrypt, wait a minute!"
+
+            # Backup current cert as certbot won't override existing cert.
+            if [ -f "${LE_FOLDER}/certs/${FQDN}.crt" ]; then
+                echo "[$(currentDate)] ${FQDN} found existing cert, creating a backup!"
+                mv "${LE_FOLDER}/certs/${FQDN}.crt" "${LE_FOLDER}/backup/certs/${FQDN}_backup_$(date +"%Y-%m-%d_%H").crt"
+                mv "${LE_FOLDER}/fullchain/${FQDN}.crt" "${LE_FOLDER}/backup/fullchain/${FQDN}_backup_$(date +"%Y-%m-%d_%H").crt"
+            fi
             certbot certonly -c ${LE_FOLDER}/conf/${FQDN}.conf --logs-dir "${LE_LOGS}" --quiet
             if [ $? -ne 0 ]; then
                 echo "[$(currentDate)] ${FQDN} failed to request the certificate."
@@ -162,6 +169,7 @@ EOL
 
     if [ -f "${LE_FOLDER}/conf/cf.ini" ]; then
         echo "[$(currentDate)] certbot CF config successfully generated"
+        return 0
     else
         echo "[$(currentDate)] certbot CF config successfully generated failed: ${LE_FOLDER}/conf/cf.ini !"
         return 1

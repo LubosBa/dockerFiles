@@ -38,13 +38,16 @@ else
       while :; do
         echo "[$(currentDate)] Checking certificates for ${LE_FQDN}"
         /opt/le_cert_get.sh
-        
-        echo "[$(currentDate)] Reloading nginx with new SSL Certificates"
-        /usr/sbin/nginx -c ${DEFAULT_CONFIG} -s reload
+
+        # Implement check, if we need reload, if it's first startup.
         if [ $? -ne 0 ]; then
-            echo "[$(currentDate)] nginx reload failed! Check error logs."
-        else
-            echo "[$(currentDate)] nginx reload successful! Next run will take place in ${CHECK_PERIOD}"
+            echo "[$(currentDate)] Reloading nginx with new SSL Certificates"
+            /usr/sbin/nginx -c ${DEFAULT_CONFIG} -s reload
+            if [ $? -ne 0 ]; then
+                echo "[$(currentDate)] nginx reload failed! Check error logs."
+            else
+                echo "[$(currentDate)] nginx reload successful! Next run will take place in ${CHECK_PERIOD}"
+            fi
         fi
         sleep ${CHECK_PERIOD}
       done
