@@ -1,5 +1,5 @@
-# Use Debian stable as the base image
-FROM debian:stable
+# Use Alpine latest as the base image
+FROM alpine:latest
 
 # Meta info
 LABEL maintainer "lubos@lubos.sk"
@@ -8,16 +8,18 @@ LABEL maintainer "lubos@lubos.sk"
 WORKDIR /opt/
 
 # Download Kibana
-ADD https://artifacts.elastic.co/downloads/kibana/kibana-7.10.1-linux-x86_64.tar.gz .
+ADD https://artifacts.elastic.co/downloads/kibana/kibana-8.9.0-linux-x86_64.tar.gz .
 
 # Add startup script.
-ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/kibana/entrypoint.sh .
+ADD entrypoint.sh .
 
 # Prepare the container for Kibana.
 RUN mkdir -p /opt/kibana; \
-    tar -xf kibana-7.10.1-linux-x86_64.tar.gz -C /opt/kibana --strip-components=1; \
-    useradd -u 1001 --shell /bin/bash kibana; \
+    tar -xf kibana-*.tar.gz -C /opt/kibana --strip-components=1; \
+    adduser -h /opt/ -s /bin/sh -u 1001 -D kibana; \
+    rm *.tar.gz; \
     chown -R 1001:1001 /opt/*; \
+    apk add bash libgcc libc6-compat libstdc++ gcompat; \
     chmod +x /opt/entrypoint.sh
 
 # Setup persistent storage
@@ -27,7 +29,7 @@ VOLUME ["/logs", "/data", "/config"]
 USER kibana
 
 # Load Kibana configuration file.
-ENV CONFIG_PATH "/config/kibana.yml"
+ENV KBN_PATH_CONF "/config"
 
 # Starts Kibana
 CMD /opt/entrypoint.sh

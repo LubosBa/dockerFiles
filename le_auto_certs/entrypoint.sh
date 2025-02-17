@@ -82,7 +82,7 @@ function certGen {
     fi
 
     # Request new LE certificate.
-    certbot certonly -c /certs/conf/${1}.conf
+    certbot certonly -c /certs/conf/${1}.conf --dns-cloudflare-propagation-seconds 60
 
     # Check, if we should generate a truststore + keystore
     if [[ "${2}" == "--keystore" ]]; then

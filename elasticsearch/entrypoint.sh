@@ -8,7 +8,7 @@ IP="$(ip addr show | grep inet | grep -v '127.0.0.1' | head -1 | awk '{ print $2
 # Get hostname
 HOSTNAME="$(hostname -s)"
 
-# Check, if ElasticSearch config folder is empty:
+
 if [[ -z "$(ls -A /config/)" ]]; then
   cp -r /opt/elasticsearch/config/* /config/
   # Prepare ES configu before startup as this will be first time run.
@@ -22,6 +22,8 @@ if [[ -z "$(ls -A /config/)" ]]; then
   sed -i 's|#path.logs: /path/to/logs|path.logs: /logs|' /config/elasticsearch.yml
   # Setup network address to which ES will bind.
   sed -i "s/#network.host: 192.168.0.1/network.host: ${IP}/" /config/elasticsearch.yml
+  # Disable ES ML because of compability issues with Alpine linux.
+  echo 'xpack.ml.enabled: false' >> /config/elasticsearch.yml
 
 fi
 

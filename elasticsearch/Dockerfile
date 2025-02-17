@@ -1,5 +1,5 @@
-# Use Debian stable as the base image
-FROM debian:stable
+# Use Alpine latest as the base image
+FROM alpine:latest
 
 # Meta info
 LABEL maintainer "lubos@lubos.sk"
@@ -8,19 +8,21 @@ LABEL maintainer "lubos@lubos.sk"
 WORKDIR /opt/
 
 # Download OpenJDK
-ADD https://download.java.net/openjdk/jdk11/ri/openjdk-11+28_linux-x64_bin.tar.gz  .
+ADD https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.4.1%2B1/OpenJDK17U-jre_x64_alpine-linux_hotspot_17.0.4.1_1.tar.gz .
 
 # Download Elastic search
-ADD https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.10.1-linux-x86_64.tar.gz .
+ADD https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.9.0-linux-x86_64.tar.gz .
 
 # Add startup script.
-ADD https://raw.githubusercontent.com/LubosBa/dockerFiles/master/elasticsearch/entrypoint.sh .
+ADD entrypoint.sh .
 
 # Prepare the container for ElasticSearch.
 RUN mkdir -p /opt/java; mkdir -p /opt/elasticsearch; \
-    tar -xf openjdk-11+28_linux-x64_bin.tar.gz -C /opt/java --strip-components=1; \
-    tar -xf elasticsearch-7.10.1-linux-x86_64.tar.gz -C /opt/elasticsearch --strip-components=1; \
-    useradd -u 1001 --shell /bin/bash elastic; \
+    tar -xf OpenJDK*.tar.gz -C /opt/java --strip-components=1; \
+    tar -xf elasticsearch-*-x86_64.tar.gz -C /opt/elasticsearch --strip-components=1; \
+    rm *.tar.gz; \
+    adduser -h /opt/ -s /bin/sh -u 1001 -D elastic; \
+    apk add bash libc6-compat; \
     chown -R 1001:1001 /opt/*; \
     chmod +x /opt/entrypoint.sh;
 
@@ -31,8 +33,8 @@ VOLUME ["/logs", "/data", "/config"]
 USER elastic
 
 # Setups env
-ENV JAVA_HOME "/opt/java/"
-ENV PATH "${PATH}:${JAVA_HOME}/bin"
+ENV ES_JAVA_HOME "/opt/java/"
+ENV PATH "${PATH}:${ES_JAVA_HOME}/bin"
 ENV ES_PATH_CONF "/config"
 
 # Starts ElasticSearch

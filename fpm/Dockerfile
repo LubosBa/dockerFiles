@@ -9,9 +9,9 @@ WORKDIR /opt/
 
 # Set up packages
 RUN apk update && apk upgrade; \
-apk add php82 php82-fpm; \
-apk search php82 | awk -F'-' '{print $1"-"$2}' | grep -vE 'pecl|php82-8' | xargs apk add; \
-apk add php82-pecl-imagick exiftool; \
+apk add php83 php83-fpm; \
+apk search php83 | awk -F'-' '{print $1"-"$2}' | grep -vE 'pecl|php83-8' | xargs apk add; \
+apk add php83-pecl-imagick exiftool php83-pecl-redis; \
 adduser -h /opt/ -s /bin/sh -u 9999 -D php_web; \
 mkdir -p /config;
 

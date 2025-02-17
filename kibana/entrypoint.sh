@@ -16,7 +16,7 @@ if [[ -z "$(ls -A /config/)" ]]; then
   # Setup Kibana name.
   sed -i "s|#server\.name: \"your-hostname\"|server\.name: \"Lubos' Kibana\"|" /config/kibana.yml
   # Setup ElasticSearch connection.
-  sed -i "s|#elasticsearch\.url: \"http://localhost:9200\"|elasticsearch\.url: \"http://els1:9200\"|" /config/kibana.yml
+  sed -i "s|#elasticsearch\.hosts: \[\"http://localhost:9200\"\]|elasticsearch\.hosts: \[\"http://webs:81\"\]|" /config/kibana.yml
 fi
 
 /opt/kibana/bin/kibana serve
